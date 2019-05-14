@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import NavBar from "./components/NavBar"
+import Presentation from "./components/Presentation"
 
 function App() {
+  const [currentView, setCurrentView] = useState("")
+
+  const tab1Nav = () =>  setCurrentView("tab1")
+  const tab2Nav = () =>  setCurrentView("tab2")
+  const tab3Nav = () =>  setCurrentView("tab3")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar tab1Nav={tab1Nav} tab2Nav={tab2Nav} tab3Nav={tab3Nav} />
+      <Presentation currentView={currentView} />
     </div>
   );
 }
